@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baize.framework.dao.CategoryMapper" >
+  <resultMap id="BaseResultMap" type="com.baize.framework.domain.Category" >
+    <constructor >
+      <arg column="Id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="Section_Id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="Subject_Id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="Create_Date" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="Modify_Date" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <insert id="insert" parameterType="com.baize.framework.domain.Category" >
+    insert into ba_section_subject (Id, Section_Id, Subject_Id, 
+      Create_Date, Modify_Date)
+    values (#{id,jdbcType=INTEGER}, #{sectionId,jdbcType=INTEGER}, #{subjectId,jdbcType=INTEGER}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{modifyDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.baize.framework.domain.Category" >
+    insert into ba_section_subject
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="sectionId != null" >
+        Section_Id,
+      </if>
+      <if test="subjectId != null" >
+        Subject_Id,
+      </if>
+      <if test="createDate != null" >
+        Create_Date,
+      </if>
+      <if test="modifyDate != null" >
+        Modify_Date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="sectionId != null" >
+        #{sectionId,jdbcType=INTEGER},
+      </if>
+      <if test="subjectId != null" >
+        #{subjectId,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyDate != null" >
+        #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+</mapper>

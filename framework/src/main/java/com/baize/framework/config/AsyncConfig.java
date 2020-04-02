@@ -43,7 +43,7 @@ public class AsyncConfig implements AsyncConfigurer {
         threadPoolTaskExecutor.setQueueCapacity(threadPoolQueueCapacity);
         threadPoolTaskExecutor.setKeepAliveSeconds(threadPoolKeepAliveSeconds);
         threadPoolTaskExecutor.setThreadNamePrefix(threadPoolNamePrefix);
-        return null;
+        return threadPoolTaskExecutor;
     }
 
     /**

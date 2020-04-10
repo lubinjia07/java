@@ -4,21 +4,21 @@ import lombok.Data;
 
 @Data
 public class BaseResponse {
-    public int status;
+    protected int status;
 
-    public String msg = "";
+    protected String msg = "";
 
-    public void Success(){
+    public void successResult(){
         this.status = 200;
         this.msg = "";
     }
 
-    public void Success(String msg){
+    public void successResult(String msg){
         this.status = 200;
         this.msg = msg;
     }
 
-    public void Failure(){
+    public void failureResult(){
         this.status = 500;
     }
 
@@ -27,11 +27,11 @@ public class BaseResponse {
         this.msg = msg;
     }
 
-    public void ParamError(){
+    public void paramError(){
         this.status = 404;
     }
 
-    public void ParamError(String msg){
+    public void paramError(String msg){
         this.status = 404;
         this.msg = msg;
     }

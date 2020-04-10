@@ -6,12 +6,12 @@ import lombok.Data;
 public class ApiResponse<T> extends BaseResponse {
     private T data;
 
-    public void Success(T data){
+    public void successResult(T data){
         this.status = 200;
         this.data = data;
     }
 
-    public void Success(T data, String msg){
+    public void successResult(T data, String msg){
         this.status = 200;
         this.data = data;
         this.msg = msg;

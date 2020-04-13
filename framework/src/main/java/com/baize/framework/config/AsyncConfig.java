@@ -19,15 +19,15 @@ import java.util.concurrent.Executor;
 @Configuration
 @EnableAsync
 public class AsyncConfig implements AsyncConfigurer {
-    @Value("thread.pool.core.pool.size")
+    @Value("${thread.pool.core.pool.size}")
     private int threadPoolCorePoolSize;
-    @Value("thread.pool.max.pool.size")
+    @Value("${thread.pool.max.pool.size}")
     private int threadPoolMaxPoolSize;
-    @Value("thread.pool.queue.capacity")
+    @Value("${thread.pool.queue.capacity}")
     private int threadPoolQueueCapacity;
-    @Value("thread.pool.keep.alive.seconds")
+    @Value("${thread.pool.keep.alive.seconds}")
     private int threadPoolKeepAliveSeconds;
-    @Value("async.name.prefix")
+    @Value("${async.name.prefix}")
     private String threadPoolNamePrefix;
 
     /**

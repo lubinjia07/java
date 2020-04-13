@@ -13,16 +13,15 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
  */
 @Configuration
 public class ThreadPoolConfig {
-
-    @Value("thread.pool.core.pool.size")
+    @Value("${thread.pool.core.pool.size}")
     private int threadPoolCorePoolSize;
-    @Value("thread.pool.max.pool.size")
+    @Value("${thread.pool.max.pool.size}")
     private int threadPoolMaxPoolSize;
-    @Value("thread.pool.queue.capacity")
+    @Value("${thread.pool.queue.capacity}")
     private int threadPoolQueueCapacity;
-    @Value("thread.pool.keep.alive.seconds")
+    @Value("${thread.pool.keep.alive.seconds}")
     private int threadPoolKeepAliveSeconds;
-    @Value("thread.pool.name.prefix")
+    @Value("${thread.pool.name.prefix}")
     private String threadPoolNamePrefix;
 
 //    @Primary

@@ -10,8 +10,8 @@ import java.util.List;
 
 @Service
 public class DemoService {
-    @Value("${}")
-    private String str;
+//    @Value("${}")
+//    private String str;
 
     public String getDemo(){
         return "123";

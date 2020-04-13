@@ -1,0 +1,76 @@
+########################################################################################
+##
+## Available variables:
+##         $entryList.methodList - List of method composites
+##         $entryList.privateMethodList - List of private method composites
+##         $entryList.fieldList - ArrayList of class scope field names
+##         $entryList.className - class name
+##         $entryList.packageName - package name
+##         $today - Todays date in MM/dd/yyyy format
+##
+##            MethodComposite variables:
+##                $method.name - Method Name
+##                $method.signature - Full method signature in String form
+##                $method.reflectionCode - list of strings representing commented out reflection code to access method (Private Methods)
+##                $method.paramNames - List of Strings representing the method's parameters' names
+##                $method.paramClasses - List of Strings representing the method's parameters' classes
+##
+## You can configure the output class name using "testClass" variable below.
+## Here are some examples:
+## Test${entry.ClassName} - will produce TestSomeClass
+## ${entry.className}Test - will produce SomeClassTest
+##
+########################################################################################
+##
+#macro (cap $strIn)$strIn.valueOf($strIn.charAt(0)).toUpperCase()$strIn.substring(1)#end
+## Iterate through the list and generate testcase for every entry.
+#foreach ($entry in $entryList)
+#set( $testClass="${entry.className}Test")
+##
+package $entry.packageName;
+
+import org.junit.Test;
+import org.junit.Before;
+import org.junit.After;
+import org.springframework.beans.factory.annotation.Autowired;
+
+/**
+* ${entry.className} Tester.
+*
+* @author <Authors name>
+* @since <pre>$today</pre>
+* @version 1.0
+*/
+public class $testClass extends BaseTest{
+    @Autowired
+    private ${entry.className} ${entry.className};
+
+    @Before
+    public void before() throws Exception {
+
+    }
+
+    @After
+    public void after() throws Exception {
+
+    }
+
+    #foreach($method in $entry.methodList)
+
+    @Test
+    public void test#cap(${method.name})() throws Exception {
+
+    }
+    #end
+    #foreach($method in $entry.privateMethodList)
+
+    @Test
+    public void test#cap(${method.name})() throws Exception {
+        #foreach($string in $method.reflectionCode)
+        $string
+        #end
+    }
+    #end
+
+}
+#end

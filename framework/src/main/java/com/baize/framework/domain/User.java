@@ -18,6 +18,11 @@ public class User {
         this.modifyDate = modifyDate;
     }
 
+    public User(Integer id, String name){
+        this.id = id;
+        this.name = name;
+    }
+
     public User() {
         super();
     }

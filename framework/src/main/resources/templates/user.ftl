@@ -8,8 +8,8 @@
             <td>age</td>
         </tr>
         <tr>
-            <td>${user.userName}</td>
-            <td>${user.age}</td>
+            <td>${user.id}</td>
+            <td>${user.name}</td>
         </tr>
     </table>
     <div>

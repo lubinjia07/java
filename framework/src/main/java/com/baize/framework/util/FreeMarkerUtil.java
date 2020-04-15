@@ -18,62 +18,39 @@ import java.util.Map;
  */
 @Component
 public class FreeMarkerUtil {
-    private Configuration cfg = null;
-
-//	@Autowired
-//	private FreeMarkerConfigurer freeMarkerConfigurer;
+    private Configuration cfg;
 
     @Resource
     private ServletContext servletContext;
 
     @PostConstruct
     public void init() {
-        //通过freemarkerd Configuration读取相应的ftl
-        cfg = new Configuration();
-//        cfg = new Configuration(Configuration.VERSION_2_3_23);
-        //设定去哪里读取相应的ftl模板文件，指定模板路径
+        cfg = new Configuration(Configuration.DEFAULT_INCOMPATIBLE_IMPROVEMENTS);
+        //指定模板路径
         cfg.setClassForTemplateLoading(this.getClass(), "/templates");
     }
 
-    public Template getTemplate(String name){
-        try {
-            //在模板文件目录中找到名称为name的文件
-            Template template =  cfg.getTemplate(name);
-            return template;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
+    /**
+     * 在模板文件目录中找到名称为name的文件
+     * @param name
+     * @return
+     * @throws IOException
+     */
+    public Template getTemplate(String name) throws IOException {
+        return cfg.getTemplate(name);
     }
 
-    public String getTemplateContent(String name, Map<String, Object> params){
-        try {
-            //在模板文件目录中找到名称为name的文件
-            Template template =  cfg.getTemplate(name);
-            String content = FreeMarkerTemplateUtils.processTemplateIntoString(template, params);
-            return content;
-        } catch (IOException | TemplateException e) {
-            e.printStackTrace();
-        }
-        return null;
+    /**
+     * 传入参数解析出模板内容
+     * @param name
+     * @param params
+     * @return
+     * @throws IOException
+     * @throws TemplateException
+     */
+    public String getTemplateContent(String name, Map<String, Object> params) throws IOException, TemplateException {
+        Template template = cfg.getTemplate(name);
+        return FreeMarkerTemplateUtils.processTemplateIntoString(template, params);
     }
-
-
-//    public String getHtmlTemplate(String ftlFile, Object dataModel) {
-//        String htmlTemplate = "";
-//        try {
-//            Template template = cfg.getTemplate(ftlFile, "UTF-8");
-//            Writer out = new StringWriter();
-//            template.process(dataModel, out);
-//            htmlTemplate = out.toString();
-//            out.flush();
-//            out.close();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        } catch (TemplateException e) {
-//            e.printStackTrace();
-//        }
-//        return htmlTemplate;
-//    }
 
 }

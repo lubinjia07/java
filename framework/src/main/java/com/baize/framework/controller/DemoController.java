@@ -24,7 +24,7 @@ public class DemoController {
 
     @ApiOperation(value = "查询单条数据", notes = "查询单条数据",
             response = String.class)
-    @PostMapping("/get")
+    @GetMapping("/get")
     public String get(@ApiParam("用户id") String userId){
         return demoService.getDemo();
     }

@@ -1,17 +1,17 @@
 package com.baize.framework.controller;
 
+
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  * @author lubinjia
- * @create 2020/4/17 1:23
+ * @create 2020/4/18 0:15
  */
 @Controller
 public class HomeController {
-    //    @RequestMapping(value = {"/","home","index"})
-    @RequestMapping("/")
-    public String index() {
+    @GetMapping("/")
+    public String index(){
         return "index";
     }
 }

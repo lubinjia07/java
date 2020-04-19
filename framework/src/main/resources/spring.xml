@@ -20,8 +20,8 @@
         <property name="freemarkerVariables"><!--设置一些常用的全局变量-->
             <map>
                 <entry key="xml_escape" value-ref="fmXmlEscape" />
-                <entry key="webRoot" value="/shop"></entry>
-                <entry key="jsRoot" value="/shop/js"></entry>
+                <entry key="webRoot" value="/shop"/>
+                <entry key="jsRoot" value="/shop/js"/>
             </map>
         </property>
     </bean>
@@ -40,15 +40,4 @@
             <property name="exposeSpringMacroHelpers" value="true" /> -->
         <property name="order" value="0" />
     </bean>
-    <!-- 对模型视图名称的解析，即在模型视图名称添加前后缀 通用解析器 -->
-    <bean id="viewResolver"
-          class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="" />
-        <property name="viewNames" value="*.html,*.jsp" />
-        <property name="suffix" value="" />
-        <property name="viewClass"
-                  value="org.springframework.web.servlet.view.InternalResourceView" />
-        <property name="order" value="1"></property>
-    </bean>
-
 </beans>

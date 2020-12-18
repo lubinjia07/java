@@ -4,6 +4,7 @@ import com.baize.framework.dto.DemoRequestDto;
 import com.baize.framework.dto.DemoResponseDto;
 import com.baize.framework.dto.basic.ApiPageResponse;
 import com.baize.framework.service.DemoService;
+import com.baize.framework.service.RestemplateService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -19,6 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class DemoController {
     @Autowired
     private DemoService demoService;
+    @Autowired
+    private RestemplateService restemplateService;
 
 //    ,produces = MediaType.APPLICATION_JSON_VALUE
 
@@ -36,6 +39,14 @@ public class DemoController {
         ApiPageResponse<DemoResponseDto> response = new ApiPageResponse<>();
         response.SuccessPage(demoService.getList(requestDto));
         return response;
+    }
+
+
+    @ApiOperation(value = "查询多条数据", notes = "查询多条数据",
+            response = DemoResponseDto.class)
+    @PostMapping("/post")
+    public RestemplateService.InvoiceResponse testPost(DemoRequestDto requestDto){
+        return restemplateService.testPost();
     }
 
 }

@@ -1,7 +1,7 @@
 package com.baize.framework.controller;
 
 import com.baize.framework.dto.basic.ApiResponse;
-import com.baize.framework.util.DownloadFileUtil;
+//import com.baize.framework.util.DownloadFileUtil;
 import lombok.SneakyThrows;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.InputStreamResource;
